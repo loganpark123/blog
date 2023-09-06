@@ -31,7 +31,7 @@ format:
 
 ::: {layout="[21,79]" .profile-header}
 
-
+![](Clipped_image_20230906_170634.PNG){.profile-pic}
 
 Hello, I'm Logan Parker. I'm a machine learning engineer who loves building machine learning infrastructure and tools 👷🏼‍♂️.  I lead or contribute to many popular [open-source machine learning projects](oss/opensource.qmd). Furthermore, I have extensive experience (2+ years) as a machine learning engineer [across various industries](https://www.linkedin.com/in/logansparker/), including large tech companies like Airbnb and GitHub.
 :::
