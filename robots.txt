@@ -1,1 +1,1 @@
-Sitemap: https://hamel.dev/sitemap.xml
+Sitemap: http://blog.logansparker.com/sitemap.xml
