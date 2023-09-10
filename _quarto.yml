@@ -1,19 +1,18 @@
 project:
   type: website
 
-ipynb-filters: 
-  - quarto_filter.py
+
 
 exeucte:
   eval: false
 
 website:
-  title: "Hamel's Blog"
+  title: "Logans's Blog"
   image: quarto.png
   page-footer:
     center:
       - icon: linkedin
-        href: https://www.linkedin.com/in/hamelhusain/
+        href: https://www.linkedin.com/in/logansparker
       - icon: twitter
         href: https://twitter.com/HamelHusain
       - icon: github
@@ -23,10 +22,10 @@ website:
   favicon: favicon.ico
   open-graph: true
   twitter-card:
-     creator: "@HamelHusain"
-  site-url: "https://hamel.dev/"
+     creator: "@logansparker"
+  site-url: "http://blog.logansparker.com/"
   description: "A collection of blogs and talks on machine learning and data science."
-  repo-url: https://github.com/hamelsmu/hamel
+  repo-url: https://github.com/loganpark123/blog
   repo-actions: [edit]
   repo-branch: master
   navbar:
