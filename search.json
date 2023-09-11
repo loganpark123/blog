@@ -49,102 +49,39 @@
     "text": "Other\nI worked as a staff machine learning engineer at GitHub from 2017 - 2022. I led or created the following open source projects that explored the intersection of machine learning, data and the developer workflow:\n\n\n\n\n\n\nProject\n\n\nDescription\n\n\nRole\n\n\nOther References\n\n\n\n\n\n\nCode Search Net \n\n\nDatasets, tools, and benchmarks for representation learning of code. This was a big part of the inspiration for GitHub’s eventual work on CoPilot. \n\n\nLead\n\n\n Blog, Paper\n\n\n\n\nMachine Learning Ops\n\n\nA collection of resources on how to facilitate Machine Learning Ops with GitHub. This project explored integrations with a wide variety of data science tools with GitHub Actions. \n\n\nCreator\n\n\nBlog\n\n\n\n\nIssue Label Bot\n\n\nA GitHub App powered by machine learning that auto-labels issues. \n\n\nCreator\n\n\nBlog, Talk\n\n\n\n\nCovid19-dashboard \n\n\nA demonstration of how to use GitHub Actions, Jupyter Notebooks and fastpages to create interactive dashboards that update daily.\n\n\n\nCreator\n\n\nNews Article\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "notes/concurrency.html",
-    "href": "notes/concurrency.html",
-    "title": "Python Concurrency",
+    "objectID": "notes/cuda.html",
+    "href": "notes/cuda.html",
+    "title": "CUDA Version Management",
     "section": "",
-    "text": "Understand the world of Python concurrency: threads, processes, coroutines and asynchronous programming with a realistic examples.\nSee this blog article."
+    "text": "There are many libraries that only support specific versions of CUDA. Downgrading/upgrading CUDA can sometimes be tricky (especially downgrading). It’s often desirable to manage CUDA versions per project (instead of globally), without having to reach for Docker."
   },
   {
-    "objectID": "blog/secret.html",
-    "href": "blog/secret.html",
-    "title": "Hamel’s Blog",
+    "objectID": "notes/cuda.html#problem",
+    "href": "notes/cuda.html#problem",
+    "title": "CUDA Version Management",
     "section": "",
-    "text": "This page is supposed to be secret!\n\n\n\nA listing of all my blog posts can be found here\n\n\n\n\n\n\n\n\n\n\n  \n\n\n\n\nOn commercializing nbdev\n\n\n\n\n\n\n\nJupyter\n\n\nnbdev\n\n\n\n\nWhy I decided not to commercialize nbdev.\n\n\n\n\n\n\nMay 30, 2023\n\n\nHamel Husain\n\n\n\n\n\n\n  \n\n\n\n\nWhy Should ML Engineers Learn Kubernetes?\n\n\n\n\n\n\n\nK8s\n\n\n\n\nLearning K8s can give you an unreasonable advantage as an MLE and unblock your team.\n\n\n\n\n\n\nJan 16, 2023\n\n\nHamel Husain\n\n\n\n\n\n\nNo matching items"
+    "text": "There are many libraries that only support specific versions of CUDA. Downgrading/upgrading CUDA can sometimes be tricky (especially downgrading). It’s often desirable to manage CUDA versions per project (instead of globally), without having to reach for Docker."
   },
   {
-    "objectID": "blog/posts/nbdev/index.html",
-    "href": "blog/posts/nbdev/index.html",
-    "title": "On commercializing nbdev",
+    "objectID": "notes/cuda.html#solution",
+    "href": "notes/cuda.html#solution",
+    "title": "CUDA Version Management",
+    "section": "Solution",
+    "text": "Solution\nYou can use conda to manage your CUDA versions! This allows you to isolate specific CUDA versions to specific environments rather than managing CUDA versions globally.\n\n\n\n\n\n\nNote\n\n\n\nI’m using mamba which has faster solvers than conda. Refer to the docs for installation instructions.\n\n\nLet’s say I want to downgrade to CUDA 11.7 in its own conda environment. First, I will create a new environment named cuda11-7 with the following command:\nmamba create -n cuda11-7 python=3.8\nmamba activate cuda11-7\nBefore I downgrade, we can check our CUDA version with the following command:\n&gt; nvcc --version\n\nnvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2022 NVIDIA Corporation\nBuilt on Wed_Sep_21_10:33:58_PDT_2022\nCuda compilation tools, release 11.8, V11.8.89\nBuild cuda_11.8.r11.8/compiler.31833905_0\nAs you can see, I have CUDA version 11.8 but I want to downgrade to 11.7. We can downgrade CUDA by using cuda-toolkit:\nmamba install -c \"nvidia/label/cuda-11.7.1\" cuda-toolkit\nThis will take several minutes to complete. Next, recheck your CUDA version:\n&gt; nvcc --version\n\nnvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2022 NVIDIA Corporation\nBuilt on Wed_Jun__8_16:49:14_PDT_2022\nCuda compilation tools, release 11.7, V11.7.99\nBuild cuda_11.7.r11.7/compiler.31442593_0\nNext, you need to install the correct version of PyTorch for your CUDA version. It is crucial to install the right version of PyTorch that matches your CUDA version exactly. For example, if you want to install PyTorch with CUDA 11.7, you can use the following command:\nmamba install pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia\nYou can find PyTorch installation instructions on this page.\nViola! You have downgraded your CUDA version successfully. Note that this version of CUDA is isolated to this specific environment.\nTo make sure that everything is working correctly, make sure you can import torch and check the CUDA version from within Python:\n&gt; python -c \"import torch; print(torch.version.cuda)\"\n11.7"
+  },
+  {
+    "objectID": "notes/cuda.html#additional-resources",
+    "href": "notes/cuda.html#additional-resources",
+    "title": "CUDA Version Management",
+    "section": "Additional Resources",
+    "text": "Additional Resources\n\nWhy does nvcc --version sometimes report a different CUDA version than nvidia-smi? See this answer on Stack Overflow.\nTwitter discussion on this topic."
+  },
+  {
+    "objectID": "guest-blog.html",
+    "href": "guest-blog.html",
+    "title": "Guest Blogs",
     "section": "",
-    "text": "nbdev is a software development tool based on Jupyter that feels like its from the future.\nA few friends have asked me why I decided not to commercialize nbdev, especially after putting lots of work into the project, including leaving my full-time job to work on it. So I thought I would write a short post to explain my reasoning."
-  },
-  {
-    "objectID": "blog/posts/nbdev/index.html#background",
-    "href": "blog/posts/nbdev/index.html#background",
-    "title": "On commercializing nbdev",
-    "section": "Background",
-    "text": "Background\nnbdev is an innovative software development framework for Python that embraces literate and exploratory programming. I worked on nbdev from 2020-2023 with Jeremy Howard and, later, Wasim Lorgat. I had the privilege and excitement of exploring the boundaries of developer tools and exploratory programming while working with very talented software engineers. In addition to creating a tool many people enjoyed, I enjoyed using nbdev for personal and professional projects."
-  },
-  {
-    "objectID": "blog/posts/nbdev/index.html#opportunities",
-    "href": "blog/posts/nbdev/index.html#opportunities",
-    "title": "On commercializing nbdev",
-    "section": "Opportunities",
-    "text": "Opportunities\nWhile conducting product research, I interviewed many developers from different backgrounds to understand their pain points and needs. All developers I talked to struggled with one key challenge: it was difficult, if not impossible, to convince other engineers to use nbdev.\nThe following are the biggest reasons that prevented adoption:\n\nFriction in onboarding engineers. In many companies, there are often existing Python projects, and it can be detrimental to maintain different ways of doing things when a company has already settled upon one way that it has built processes and tools around.\nCollisions with the rest of the software development stack: it was (and still is) a pain to version control notebooks in a way that’s conducive to collaboration. For practical purposes, you cannot perform code reviews of notebooks on GitHub without purchasing a tool called ReviewNB. So instead of convincing people to use nbdev, you have to convince them to use nbdev and ReviewNB. This makes the barrier to initial adoption considerably high - as procuring software in many organizations is a non-trivial process involving security review, compliance, legal and other stakeholders.\n\nI viewed solving the above problems as potential opportunities for commercializing nbdev."
-  },
-  {
-    "objectID": "blog/posts/nbdev/index.html#shifting-focus",
-    "href": "blog/posts/nbdev/index.html#shifting-focus",
-    "title": "On commercializing nbdev",
-    "section": "Shifting Focus",
-    "text": "Shifting Focus\nJeremy, Wasim, and I eventually settled on the idea of “WordPress for developers,” a hosted site allowing people to create and share nbdev projects. We thought this would be an excellent way to get people to try nbdev without installing anything. The idea was to narrow the audience to people interested in hosting projects on a platform that promoted exploration and sharing, similar to Glitch that was as easy to use and pragmatic as Wordpress.\nAround the same time we began discussing hosted tools, the machine learning world experienced a tectonic shift due to the explosion of Generative AI, namely Stable Diffusion. fast.ai, the organization that created nbdev, was also changing its focus. fast.ai’s prime directive was to make deep learning accessible to as many people as possible, and generative AI was too important to ignore. Accordingly, Jeremy placed his full attention on a Stable Diffusion course.\nThis pivot caused some turbulence as we navigated the different priorities of nbdev, generative AI research, and making money. We eventually settled on offering consulting services for everything related to fast.ai in the form of fast.ai partners, which would allow us to bootstrap ourselves financially and embrace the larger mission of fast.ai (including generative AI and research). Eventually, I found the splintered focus across so many areas to be unproductive1 and decided to step away from everything except consulting to regain my footing.\nSoon after that, ChatGPT emerged onto the scene and caused further shifts in machine learning that were orders of magnitude larger than their text-to-image predecessors. Pretty soon, all of my clients were interested in language models, and I found myself working exclusively on operationalizing them (a skill that I have cultivated by working in machine learning for 20+ years). Additionally, LLMs profoundly changed the nature of software development, especially the kind of software development that nbdev was designed to support2. These factors and those discussed earlier suggested it was a good time to step away from nbdev and focus on other things."
-  },
-  {
-    "objectID": "blog/posts/nbdev/index.html#what-i-learned",
-    "href": "blog/posts/nbdev/index.html#what-i-learned",
-    "title": "On commercializing nbdev",
-    "section": "What I learned",
-    "text": "What I learned\nI learned some important lessons during this process:\n\nJust because you love a project and find it useful, that doesn’t necessarily imply that it’s ripe for commercialization. I always struggled to gain conviction that there was a good business model for nbdev.3 Instead, I pursued this path because I was drawn to the idea of starting a business with people I really liked. Ultimately, I learned that at least one person needs strong conviction in addition to being excited about the people you are working with - not just one or the other.4 I also learned that it’s important to be honest with yourself about your (and your team’s) level of conviction and not try to force something that isn’t there.\nListen to your instincts. I ignored my instincts on multiple occasions throughout this journey. As I’ve grown older, I’ve learned to make this mistake much less often, but I could have done better here.\nDon’t be afraid to pivot. I think we avoided unnecessary churn by steering clear of a situation that wasn’t promising. I’m much more excited about the work I’m doing now.5\nOwn your own brand. My professional brand became increasingly tied to fast.ai and my friend Jeremy Howard. I’m grateful for the growth I’ve experienced under this mentorship – but I believe it is important to build your own distinct brand and identity. I discovered it can be challenging to build your own brand when you are working on someone else’s project6, and is something I struggled with. I’m looking forward to working on this more."
-  },
-  {
-    "objectID": "blog/posts/nbdev/index.html#future-directions",
-    "href": "blog/posts/nbdev/index.html#future-directions",
-    "title": "On commercializing nbdev",
-    "section": "Future Directions",
-    "text": "Future Directions\nI suspect that I’m not completely finished with nbdev. I may revisit the project or related ideas when the time is right. I’m excited by the work Posit is doing in the areas of literate and exploratory programming, which include many of the ideas explored in nbdev. Wasim has even joined the team at Posit, so I’m excited to see what they come up with.7\nRegarding what I’m working on next – I’ll have to save my thoughts on that for another post 😊."
-  },
-  {
-    "objectID": "blog/posts/nbdev/index.html#footnotes",
-    "href": "blog/posts/nbdev/index.html#footnotes",
-    "title": "On commercializing nbdev",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nI burned out several times during this process, but I didn’t realize why at the time. Not surprisingly, trying to focus on too many things at once was the root cause.↩︎\nSee this demo for ideas on how coding with LLMs might look like, especially with notebooks.↩︎\nThe problem with the hosted solution is that this is not something I would want to use. I can’t picture myself trying to host code on something other than GitHub/GitLab.↩︎\nWithout shared conviction, there is no glue holding everyone together and people can drift apart.↩︎\nI’ll share more about this in a future post.↩︎\nI don’t believe this is always the case, but it can be true depending on the dynamics of the group.↩︎\nWe previously partnered with Posit and JJ Allaire and built nbdev on top of Quarto. I’m currently advising Posit on their product and strategy. They have additional projects on their roadmap that I cannot disclose now.↩︎"
-  },
-  {
-    "objectID": "talks.html",
-    "href": "talks.html",
-    "title": "🎤 Talks",
-    "section": "",
-    "text": "These are a list of talks I’ve given:\n\nInnovating on Software Development, Data Council, March 2023.\nAutoML, Literate Programming, and Data Tooling Cargo Cults, Vanishing Gradients Podcast with Hugo Bowne Anderson, July 2022.\nHow to evaluate ML Tooling: Guest Lecutre for Stanford CS 329S ML Systems Design, Feb 2022. Slides, Video\nJupyterCon 2020: “fastpages - A new, open source Jupyter notebook blogging system.”. Slides, Video.\nGradient Descent by Weights & Biases: A discussion on Automated Machine Learning, CodeSearchNet, GitHub Actions and MLOps: Video\nGitHub Universe 2019: “Machine Learning Ops With GitHub Actions & Kubernetes”. Video\nTensorFlow World, 2019: “Automating your developer workflow on GitHub with Tensorflow”. Slides, Link\nData Skeptic Interview, Jan 2018: “Semantic Search at Github”.\nKubeCon 2018, “Natural Language Code Search With Kubeflow”. Slides, Video\nKDD, London August 2018: Hands on tutorial, “Feature Extraction and Summarization With Sequence to Sequence Learning”. Tutorial-site\nMl4all, Portland May 2018: “How to Create Magical Data Products Using Sequence-to-Sequence Models”. Slides, Video\nODSC, San Francisco Nov 2017: “Advice For New And Junior Data Scientists” Video"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Hamel's Blog",
-    "section": "",
-    "text": "Hello, I’m Logan Parker. I’m a machine learning engineer who loves building machine learning infrastructure and tools 👷🏼‍♂️. I lead or contribute to many popular open-source machine learning projects. Furthermore, I have extensive experience (2+ years) as a machine learning engineer across various industries, including large tech companies like Airbnb and GitHub.\nI’m currently exploring entrepreneurship at the intersection of dev tools, ML platforms and large language models. At GitHub, I lead CodeSearchNet, a large language model for semantic search that was a precursor to CoPilot, a large language model used by millions of developers."
-  },
-  {
-    "objectID": "index.html#get-in-touch",
-    "href": "index.html#get-in-touch",
-    "title": "Hamel's Blog",
-    "section": "💼 Get In Touch",
-    "text": "💼 Get In Touch\nDo you need help operationalizing ML or large language models?\nI’m open to consulting work and other forms of advisory. Email me at logansparker@gmail.com if you’d like to chat!"
-  },
-  {
-    "objectID": "index.html#blog-posts",
-    "href": "index.html#blog-posts",
-    "title": "Hamel's Blog",
-    "section": "📮 Blog Posts",
-    "text": "📮 Blog Posts\nSubscribe here\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Description\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nDescription\n\n\n\n\n\n\n\n\n7/28/22\n\n\nnbdev + Quarto: A new secret weapon for productivity\n\n\nOur favorite tool for software engineering productivity–nbdev, now re-written with Quarto. \n\n\nundefined\n\n\n\n\n2/9/22\n\n\nNotebooks in production with Metaflow\n\n\nIntroduces a new Metaflow feature that allows users to use notebooks in production ML workflows. \n\n\nundefined\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "index.html#subscribe",
-    "href": "index.html#subscribe",
-    "title": "Hamel's Blog",
-    "section": "📬 Subscribe",
-    "text": "📬 Subscribe\nSubscribe via  RSS or enter your email below:"
+    "text": "nbdev + Quarto: A new secret weapon for productivity, the fastai blog, July 2022.\nNotebooks in production with Metaflow Introduces a new Metaflow feature that allows users to use notebooks in production ML workflows.\nPython Concurrency: The Tricky Bits: An exploration of threads, processes, and coroutines in Python, with interesting examples that illuminate the differences between each.\nghapi, a new third-party Python client for the GitHub API by Jeremy Howard & Hamel Husain, GitHub Repo.\nNbdev: A literate programming environment that democratizes software engineering best practices by Hamel Husain, Jeremy Howard, The GitHub Blog.\nfastcore: An Underrated Python Library by Hamel Husain, Jeremy Howard, GitHub Repo.\nData Science Meets Devops: MLOps with Jupyter, Git, & Kubernetes: An end-to-end example of deploying a machine learning product using Jupyter, Papermill, Tekton, GitOps and Kubeflow. by Jeremy Lewi, Hamel_Husain, The Kubeflow Blog.\nIntroducing fastpages, An easy to use blogging platform with extra features for Jupyter Notebooks. by Jeremy Howard & Hamel Husain, GitHub Repo\nGitHub Actions: Providing Data Scientists With New Superpowers by Jeremy Howard & Hamel Husain.\nCodeSearchNet Challenge: Evaluating the State of Semantic Code Search: by Miltiadis Allamanis, Marc Brockschmidt, Hamel Husain, Ho-Hsiang Wu, Tiferet Gazit GitHub Repo\nHow To Create Natural Language Semantic Search for Arbitrary Objects With Deep Learning. (Related: GitHub engineering blog article, Live demo)\nHow To Create Magical Data Products Using Sequence-to-Sequence Models\nHow to Automate Tasks on GitHub With Machine Learning for Fun and Profit\nHow Docker Can Make You A More Effective Data Scientist\nAutomated Machine Learning, A Paradigm Shift That Accelerates Data Scientst Productivity At Airbnb"
   },
   {
     "objectID": "blog/posts/k8s/index.html",
@@ -210,39 +147,137 @@
     "text": "Footnotes\n\n\nVicki is not someone who is impressed by flashy or new technologies and is someone who takes a pragmatic approach to get the job done. When she says you should learn K8s, you should pay attention!↩︎\nEach subsection of this article has a picture that has been generated by Stable diffusion with a prompt that very similar to the image caption.↩︎\nThese systems are AWS - Sagemaker, Azure - AzureML and GCP - VertexAI.↩︎\nSome organizations have built solutions that avoid K8s. For example, BigHat uses a solution based on AWS SageMaker + Lambda and other hosted solutions. So it might be a mistake to try to move over to K8s in that example – you should try to leverage your company’s existing tech stack where possible!↩︎\nMy friend Michał Jastrzębski, who specializes in ML infrastructure, has shared the following colorful anecdote with me: “when I hear Data Scientists shouldn’t learn K8s”, I hear “DevOps needs to learn Airflow”.↩︎\nSpecifically, K8s concepts that are relevant are namespaces, labels and RBAC.↩︎"
   },
   {
-    "objectID": "guest-blog.html",
-    "href": "guest-blog.html",
-    "title": "Guest Blogs",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Logans's Blog",
     "section": "",
-    "text": "nbdev + Quarto: A new secret weapon for productivity, the fastai blog, July 2022.\nNotebooks in production with Metaflow Introduces a new Metaflow feature that allows users to use notebooks in production ML workflows.\nPython Concurrency: The Tricky Bits: An exploration of threads, processes, and coroutines in Python, with interesting examples that illuminate the differences between each.\nghapi, a new third-party Python client for the GitHub API by Jeremy Howard & Hamel Husain, GitHub Repo.\nNbdev: A literate programming environment that democratizes software engineering best practices by Hamel Husain, Jeremy Howard, The GitHub Blog.\nfastcore: An Underrated Python Library by Hamel Husain, Jeremy Howard, GitHub Repo.\nData Science Meets Devops: MLOps with Jupyter, Git, & Kubernetes: An end-to-end example of deploying a machine learning product using Jupyter, Papermill, Tekton, GitOps and Kubeflow. by Jeremy Lewi, Hamel_Husain, The Kubeflow Blog.\nIntroducing fastpages, An easy to use blogging platform with extra features for Jupyter Notebooks. by Jeremy Howard & Hamel Husain, GitHub Repo\nGitHub Actions: Providing Data Scientists With New Superpowers by Jeremy Howard & Hamel Husain.\nCodeSearchNet Challenge: Evaluating the State of Semantic Code Search: by Miltiadis Allamanis, Marc Brockschmidt, Hamel Husain, Ho-Hsiang Wu, Tiferet Gazit GitHub Repo\nHow To Create Natural Language Semantic Search for Arbitrary Objects With Deep Learning. (Related: GitHub engineering blog article, Live demo)\nHow To Create Magical Data Products Using Sequence-to-Sequence Models\nHow to Automate Tasks on GitHub With Machine Learning for Fun and Profit\nHow Docker Can Make You A More Effective Data Scientist\nAutomated Machine Learning, A Paradigm Shift That Accelerates Data Scientst Productivity At Airbnb"
+    "text": "Hello, I’m Logan Parker. I’m a machine learning engineer who loves building machine learning infrastructure and tools 👷🏼‍♂️. I currently work at CoreLogic primarily focusing on Computer Vision (CV) and 3D reconstruction. Furthermore, I have experience (2+ years) as a software engineer across various industries.\nI’m currently exploring entrepreneurship at the intersection of dev tools, ML platforms and large language models. I am working on some projects right now including a proper solution to pesky bill splitting."
   },
   {
-    "objectID": "notes/cuda.html",
-    "href": "notes/cuda.html",
-    "title": "CUDA Version Management",
+    "objectID": "index.html#get-in-touch",
+    "href": "index.html#get-in-touch",
+    "title": "Logans's Blog",
+    "section": "💼 Get In Touch",
+    "text": "💼 Get In Touch\nDo you need help operationalizing ML or large language models or maybe want to chat about VR research?\nEmail me at logansparker@gmail.com if you’d like to chat!"
+  },
+  {
+    "objectID": "index.html#blog-posts",
+    "href": "index.html#blog-posts",
+    "title": "Logans's Blog",
+    "section": "📮 Blog Posts",
+    "text": "📮 Blog Posts\nSubscribe here\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nDescription\n\n\n\n\n\n\n\n\n5/30/23\n\n\nOn commercializing nbdev\n\n\nWhy I decided not to commercialize nbdev.\n\n\n\n\n\n\n\n1/16/23\n\n\nWhy Should ML Engineers Learn Kubernetes?\n\n\nLearning K8s can give you an unreasonable advantage as an MLE and unblock your team.\n\n\n\n\n\n\n\n7/28/22\n\n\nnbdev + Quarto: A new secret weapon for productivity\n\n\nOur favorite tool for software engineering productivity–nbdev, now re-written with Quarto. \n\n\nundefined\n\n\n\n\n2/9/22\n\n\nNotebooks in production with Metaflow\n\n\nIntroduces a new Metaflow feature that allows users to use notebooks in production ML workflows. \n\n\nundefined\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "talks.html",
+    "href": "talks.html",
+    "title": "🎤 Talks",
     "section": "",
-    "text": "There are many libraries that only support specific versions of CUDA. Downgrading/upgrading CUDA can sometimes be tricky (especially downgrading). It’s often desirable to manage CUDA versions per project (instead of globally), without having to reach for Docker."
+    "text": "These are a list of talks I’ve given:\n\nInnovating on Software Development, Data Council, March 2023.\nAutoML, Literate Programming, and Data Tooling Cargo Cults, Vanishing Gradients Podcast with Hugo Bowne Anderson, July 2022."
   },
   {
-    "objectID": "notes/cuda.html#problem",
-    "href": "notes/cuda.html#problem",
-    "title": "CUDA Version Management",
+    "objectID": "blog/posts/nbdev/index.html",
+    "href": "blog/posts/nbdev/index.html",
+    "title": "On commercializing nbdev",
     "section": "",
-    "text": "There are many libraries that only support specific versions of CUDA. Downgrading/upgrading CUDA can sometimes be tricky (especially downgrading). It’s often desirable to manage CUDA versions per project (instead of globally), without having to reach for Docker."
+    "text": "nbdev is a software development tool based on Jupyter that feels like its from the future.\nA few friends have asked me why I decided not to commercialize nbdev, especially after putting lots of work into the project, including leaving my full-time job to work on it. So I thought I would write a short post to explain my reasoning."
   },
   {
-    "objectID": "notes/cuda.html#solution",
-    "href": "notes/cuda.html#solution",
-    "title": "CUDA Version Management",
-    "section": "Solution",
-    "text": "Solution\nYou can use conda to manage your CUDA versions! This allows you to isolate specific CUDA versions to specific environments rather than managing CUDA versions globally.\n\n\n\n\n\n\nNote\n\n\n\nI’m using mamba which has faster solvers than conda. Refer to the docs for installation instructions.\n\n\nLet’s say I want to downgrade to CUDA 11.7 in its own conda environment. First, I will create a new environment named cuda11-7 with the following command:\nmamba create -n cuda11-7 python=3.8\nmamba activate cuda11-7\nBefore I downgrade, we can check our CUDA version with the following command:\n&gt; nvcc --version\n\nnvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2022 NVIDIA Corporation\nBuilt on Wed_Sep_21_10:33:58_PDT_2022\nCuda compilation tools, release 11.8, V11.8.89\nBuild cuda_11.8.r11.8/compiler.31833905_0\nAs you can see, I have CUDA version 11.8 but I want to downgrade to 11.7. We can downgrade CUDA by using cuda-toolkit:\nmamba install -c \"nvidia/label/cuda-11.7.1\" cuda-toolkit\nThis will take several minutes to complete. Next, recheck your CUDA version:\n&gt; nvcc --version\n\nnvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2022 NVIDIA Corporation\nBuilt on Wed_Jun__8_16:49:14_PDT_2022\nCuda compilation tools, release 11.7, V11.7.99\nBuild cuda_11.7.r11.7/compiler.31442593_0\nNext, you need to install the correct version of PyTorch for your CUDA version. It is crucial to install the right version of PyTorch that matches your CUDA version exactly. For example, if you want to install PyTorch with CUDA 11.7, you can use the following command:\nmamba install pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia\nYou can find PyTorch installation instructions on this page.\nViola! You have downgraded your CUDA version successfully. Note that this version of CUDA is isolated to this specific environment.\nTo make sure that everything is working correctly, make sure you can import torch and check the CUDA version from within Python:\n&gt; python -c \"import torch; print(torch.version.cuda)\"\n11.7"
+    "objectID": "blog/posts/nbdev/index.html#background",
+    "href": "blog/posts/nbdev/index.html#background",
+    "title": "On commercializing nbdev",
+    "section": "Background",
+    "text": "Background\nnbdev is an innovative software development framework for Python that embraces literate and exploratory programming. I worked on nbdev from 2020-2023 with Jeremy Howard and, later, Wasim Lorgat. I had the privilege and excitement of exploring the boundaries of developer tools and exploratory programming while working with very talented software engineers. In addition to creating a tool many people enjoyed, I enjoyed using nbdev for personal and professional projects."
   },
   {
-    "objectID": "notes/cuda.html#additional-resources",
-    "href": "notes/cuda.html#additional-resources",
-    "title": "CUDA Version Management",
-    "section": "Additional Resources",
-    "text": "Additional Resources\n\nWhy does nvcc --version sometimes report a different CUDA version than nvidia-smi? See this answer on Stack Overflow.\nTwitter discussion on this topic."
+    "objectID": "blog/posts/nbdev/index.html#opportunities",
+    "href": "blog/posts/nbdev/index.html#opportunities",
+    "title": "On commercializing nbdev",
+    "section": "Opportunities",
+    "text": "Opportunities\nWhile conducting product research, I interviewed many developers from different backgrounds to understand their pain points and needs. All developers I talked to struggled with one key challenge: it was difficult, if not impossible, to convince other engineers to use nbdev.\nThe following are the biggest reasons that prevented adoption:\n\nFriction in onboarding engineers. In many companies, there are often existing Python projects, and it can be detrimental to maintain different ways of doing things when a company has already settled upon one way that it has built processes and tools around.\nCollisions with the rest of the software development stack: it was (and still is) a pain to version control notebooks in a way that’s conducive to collaboration. For practical purposes, you cannot perform code reviews of notebooks on GitHub without purchasing a tool called ReviewNB. So instead of convincing people to use nbdev, you have to convince them to use nbdev and ReviewNB. This makes the barrier to initial adoption considerably high - as procuring software in many organizations is a non-trivial process involving security review, compliance, legal and other stakeholders.\n\nI viewed solving the above problems as potential opportunities for commercializing nbdev."
+  },
+  {
+    "objectID": "blog/posts/nbdev/index.html#shifting-focus",
+    "href": "blog/posts/nbdev/index.html#shifting-focus",
+    "title": "On commercializing nbdev",
+    "section": "Shifting Focus",
+    "text": "Shifting Focus\nJeremy, Wasim, and I eventually settled on the idea of “WordPress for developers,” a hosted site allowing people to create and share nbdev projects. We thought this would be an excellent way to get people to try nbdev without installing anything. The idea was to narrow the audience to people interested in hosting projects on a platform that promoted exploration and sharing, similar to Glitch that was as easy to use and pragmatic as Wordpress.\nAround the same time we began discussing hosted tools, the machine learning world experienced a tectonic shift due to the explosion of Generative AI, namely Stable Diffusion. fast.ai, the organization that created nbdev, was also changing its focus. fast.ai’s prime directive was to make deep learning accessible to as many people as possible, and generative AI was too important to ignore. Accordingly, Jeremy placed his full attention on a Stable Diffusion course.\nThis pivot caused some turbulence as we navigated the different priorities of nbdev, generative AI research, and making money. We eventually settled on offering consulting services for everything related to fast.ai in the form of fast.ai partners, which would allow us to bootstrap ourselves financially and embrace the larger mission of fast.ai (including generative AI and research). Eventually, I found the splintered focus across so many areas to be unproductive1 and decided to step away from everything except consulting to regain my footing.\nSoon after that, ChatGPT emerged onto the scene and caused further shifts in machine learning that were orders of magnitude larger than their text-to-image predecessors. Pretty soon, all of my clients were interested in language models, and I found myself working exclusively on operationalizing them (a skill that I have cultivated by working in machine learning for 20+ years). Additionally, LLMs profoundly changed the nature of software development, especially the kind of software development that nbdev was designed to support2. These factors and those discussed earlier suggested it was a good time to step away from nbdev and focus on other things."
+  },
+  {
+    "objectID": "blog/posts/nbdev/index.html#what-i-learned",
+    "href": "blog/posts/nbdev/index.html#what-i-learned",
+    "title": "On commercializing nbdev",
+    "section": "What I learned",
+    "text": "What I learned\nI learned some important lessons during this process:\n\nJust because you love a project and find it useful, that doesn’t necessarily imply that it’s ripe for commercialization. I always struggled to gain conviction that there was a good business model for nbdev.3 Instead, I pursued this path because I was drawn to the idea of starting a business with people I really liked. Ultimately, I learned that at least one person needs strong conviction in addition to being excited about the people you are working with - not just one or the other.4 I also learned that it’s important to be honest with yourself about your (and your team’s) level of conviction and not try to force something that isn’t there.\nListen to your instincts. I ignored my instincts on multiple occasions throughout this journey. As I’ve grown older, I’ve learned to make this mistake much less often, but I could have done better here.\nDon’t be afraid to pivot. I think we avoided unnecessary churn by steering clear of a situation that wasn’t promising. I’m much more excited about the work I’m doing now.5\nOwn your own brand. My professional brand became increasingly tied to fast.ai and my friend Jeremy Howard. I’m grateful for the growth I’ve experienced under this mentorship – but I believe it is important to build your own distinct brand and identity. I discovered it can be challenging to build your own brand when you are working on someone else’s project6, and is something I struggled with. I’m looking forward to working on this more."
+  },
+  {
+    "objectID": "blog/posts/nbdev/index.html#future-directions",
+    "href": "blog/posts/nbdev/index.html#future-directions",
+    "title": "On commercializing nbdev",
+    "section": "Future Directions",
+    "text": "Future Directions\nI suspect that I’m not completely finished with nbdev. I may revisit the project or related ideas when the time is right. I’m excited by the work Posit is doing in the areas of literate and exploratory programming, which include many of the ideas explored in nbdev. Wasim has even joined the team at Posit, so I’m excited to see what they come up with.7\nRegarding what I’m working on next – I’ll have to save my thoughts on that for another post 😊."
+  },
+  {
+    "objectID": "blog/posts/nbdev/index.html#footnotes",
+    "href": "blog/posts/nbdev/index.html#footnotes",
+    "title": "On commercializing nbdev",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nI burned out several times during this process, but I didn’t realize why at the time. Not surprisingly, trying to focus on too many things at once was the root cause.↩︎\nSee this demo for ideas on how coding with LLMs might look like, especially with notebooks.↩︎\nThe problem with the hosted solution is that this is not something I would want to use. I can’t picture myself trying to host code on something other than GitHub/GitLab.↩︎\nWithout shared conviction, there is no glue holding everyone together and people can drift apart.↩︎\nI’ll share more about this in a future post.↩︎\nI don’t believe this is always the case, but it can be true depending on the dynamics of the group.↩︎\nWe previously partnered with Posit and JJ Allaire and built nbdev on top of Quarto. I’m currently advising Posit on their product and strategy. They have additional projects on their roadmap that I cannot disclose now.↩︎"
+  },
+  {
+    "objectID": "blog/secret.html",
+    "href": "blog/secret.html",
+    "title": "Hamel’s Blog",
+    "section": "",
+    "text": "This page is supposed to be secret!\n\n\n\nA listing of all my blog posts can be found here\n\n\n\n\n\n\n\n\n\n\n  \n\n\n\n\nOn commercializing nbdev\n\n\n\n\n\n\n\nJupyter\n\n\nnbdev\n\n\n\n\nWhy I decided not to commercialize nbdev.\n\n\n\n\n\n\nMay 30, 2023\n\n\nHamel Husain\n\n\n\n\n\n\n  \n\n\n\n\nWhy Should ML Engineers Learn Kubernetes?\n\n\n\n\n\n\n\nK8s\n\n\n\n\nLearning K8s can give you an unreasonable advantage as an MLE and unblock your team.\n\n\n\n\n\n\nJan 16, 2023\n\n\nHamel Husain\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "notes/concurrency.html",
+    "href": "notes/concurrency.html",
+    "title": "Python Concurrency",
+    "section": "",
+    "text": "Understand the world of Python concurrency: threads, processes, coroutines and asynchronous programming with a realistic examples.\nSee this blog article."
+  },
+  {
+    "objectID": "notes/llm/inference/big_inference.html",
+    "href": "notes/llm/inference/big_inference.html",
+    "title": "vLLM & large models",
+    "section": "",
+    "text": "Correction\n\n\n\nA previous version of this note suggested that you could run Llama 70b on a single A100. This was incorrect. The Modal container was caching the download of the much smaller 7b model. I have updated the post to reflect this. h/t to Cade Daniel for finding the mistake."
+  },
+  {
+    "objectID": "notes/llm/inference/big_inference.html#introduction",
+    "href": "notes/llm/inference/big_inference.html#introduction",
+    "title": "vLLM & large models",
+    "section": "Introduction",
+    "text": "Introduction\nLarge models like Llama-2-70b may not fit in a single GPU. I previously profiled the smaller 7b model against various inference tools. When a model is too big to fit on a single GPU, we can use various techniques to split the model across multiple GPUs.\n\nCompute & Reproducibility\nI used Modal Labs for serverless compute. Modal is very economical and built for machine learning use cases. Unlike other clouds, there are plenty of A100s available. They even give you $30 of free credits, which is more than enough to run the experiments in this note. Thanks to Modal, the scripts I reference in this note are reproducible.\nIn this note, I’m using modal client version: 0.50.2889"
+  },
+  {
+    "objectID": "notes/llm/inference/big_inference.html#distributed-inference-w-vllm",
+    "href": "notes/llm/inference/big_inference.html#distributed-inference-w-vllm",
+    "title": "vLLM & large models",
+    "section": "Distributed Inference w/ vLLM",
+    "text": "Distributed Inference w/ vLLM\nvLLM supports tensor parallelism, which you can enable by passing the tensor_parallel_size argument to the LLM constructor.\nI modified this example Modal code for Llama v2 13b to run Llama v2 70b on 4 GPUs with tensor parallelism. Below is a simplified diff with the most important changes:\ndef download_model_to_folder():\n    from huggingface_hub import snapshot_download\n\n    snapshot_download(\n-        \"meta-llama/Llama-2-13b-chat-hf\",\n+        \"meta-llama/Llama-2-70b-chat-hf\",\n        local_dir=\"/model\",\n        token=os.environ[\"HUGGINGFACE_TOKEN\"],\n    )\n\nimage = (\n    Image.from_dockerhub(\"nvcr.io/nvidia/pytorch:22.12-py3\")\n    .pip_install(\"torch==2.0.1\", index_url=\"https://download.pytorch.org/whl/cu118\")\n+    # Pin vLLM to 8/2/2023\n+    .pip_install(\"vllm @ git+https://github.com/vllm-project/vllm.git@79af7e96a0e2fc9f340d1939192122c3ae38ff17\")\n-    # Pin vLLM to 07/19/2023\n-    .pip_install(\"vllm @ git+https://github.com/vllm-project/vllm.git@bda41c70ddb124134935a90a0d51304d2ac035e8\")\n    # Use the barebones hf-transfer package for maximum download speeds. No progress bar, but expect 700MB/s.\n-    .pip_install(\"hf-transfer~=0.1\")\n+     #Force a rebuild to invalidate the cache (you can remove `force_build=True` after the first time)\n+    .pip_install(\"hf-transfer~=0.1\", force_build=True)\n    .run_function(\n        download_model_to_folder,\n        secret=Secret.from_name(\"huggingface\"),\n        timeout=60 * 20)\n)\n...\n\n-@stub.cls(gpu=\"A100\", secret=Secret.from_name(\"huggingface\"))\n+# You need a minimum of 4 A100s that are the 40GB version\n+@stub.cls(gpu=gpu.A100(count=4, memory=40), secret=Secret.from_name(\"huggingface\"))\nclass Model:\n    def __enter__(self):\n        from vllm import LLM\n\n        # Load the model. Tip: MPT models may require `trust_remote_code=true`.\n-       self.llm = LLM(MODEL_DIR)\n+       self.llm = LLM(MODEL_DIR, tensor_parallel_size=4)\n...  \nSee big-inference-vllm.py for the actual script I used.\n\n\n\n\n\n\nBe Careful To Mind The Cache When Downloading Files\n\n\n\nI found that when I ran the above code and changed the model name, I had to force a rebuild of the image to invalidate the cache. Otherwise, the old version of the model would be used. You can force a rebuild by adding force_build=True to the .pip_install call.\nWhen I initially wrote this note, I was fooled into believing I could load meta-llama/Llama-2-70b-chat-hf on a single A100. It was this tricky issue of the container that cached the download of the much smaller 7b model. 🤦\n\n\nAfter setting the appropriate secrets for HuggingFace and Weights & Biases, You can run this code on Modal with the following command:\nmodal run big-inference-vllm.py\nYou need at least 4 A100 GPUs to serve Llama v2 70b."
+  },
+  {
+    "objectID": "notes/llm/inference/big_inference.html#what-happens-with-smaller-models",
+    "href": "notes/llm/inference/big_inference.html#what-happens-with-smaller-models",
+    "title": "vLLM & large models",
+    "section": "What Happens With Smaller Models?",
+    "text": "What Happens With Smaller Models?\nEven though distributed inference is interesting for big models that do not fit on a single GPU, interesting things happen when you serve smaller models this way. Below, I test throughput for Llama v2 7b on 1, 2, and 4 GPUs. The throughput is measured by passsing these 59 prompts to llm.generate. llm.generate is described in the vLLM documentation:\n\nCall llm.generate to generate the outputs. It adds the input prompts to vLLM engine’s waiting queue and executes the vLLM engine to generate the outputs with high throughput.\n\nHere are the results, averaged over 5 runs for each row:\nYou can see all the individual runs here. In my experiments, the 70b model needed a minimum of 4 A100s to run, so that’s why there is only one row for that model (Modal only has instances with 1, 2, or 4 GPUs).\n\n\n\n\n\n\nDo Not Compare To Latency Benchmark\n\n\n\nThe tok/sec number you see here is VERY different than the latency benchmark shown on this note. This particular benchmark maximizes throughput by running multiple requests in parallel. The previous latency benchmark measures the time it takes to process a single request.\n\n\n\nObservations\n\nA100s are much faster than A10s, but A10s are significantly cheaper.1\nOn A10s, scaling up to more GPUs increases throughput at first, but then seems to diminish. It appears like there is a Goldilocks zone in terms of the right number of GPUs to maximize throughput. I did not explore this in detail, as Modal only has instances with specific numbers of GPUs.2\nThe much larger Llama v2 70b model is only ~2x slower than its 7b counterpart."
+  },
+  {
+    "objectID": "notes/llm/inference/big_inference.html#aside-pipeline-parallelism",
+    "href": "notes/llm/inference/big_inference.html#aside-pipeline-parallelism",
+    "title": "vLLM & large models",
+    "section": "Aside: Pipeline Parallelism",
+    "text": "Aside: Pipeline Parallelism\nIn theory, Pipeline Parallelism (“PP”) is slower than Tensor Parallelism, but tools for PP are compatible with a wider range of models from the HuggingFace Hub. By default, HuggingFace accelerate will automatically split the model across multiple GPUs when you pass device_map=\"auto\". (Accelerate offers other kinds of parallelism as well, like integrations with DeepSpeed).\nThis blog post and these docs are an excellent place to start. I will explore this and other kinds of parallelism in future notes."
+  },
+  {
+    "objectID": "notes/llm/inference/big_inference.html#footnotes",
+    "href": "notes/llm/inference/big_inference.html#footnotes",
+    "title": "vLLM & large models",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nAs of 8/6/2023 2 A10s costs .000612 / sec on Modal, whereas 1 A100 40GB will cost 0.001036 / sec. See this pricing chart↩︎\nFor A10 and A100s you can only get up to 4 GPUs. Furthermore, I ran into an issue with vLLM and llama 70b, where it doesn’t like an odd number of GPUs.↩︎"
   },
   {
     "objectID": "notes/video_editing.html",

@@ -2,46 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://blog.logansparker.com/oss/opensource.html</loc>
-    <lastmod>2023-09-06T22:26:17.271Z</lastmod>
+    <lastmod>2023-09-11T12:21:29.246Z</lastmod>
   </url>
   <url>
     <loc>http://blog.logansparker.com/notes/index.html</loc>
-    <lastmod>2023-09-06T22:26:16.553Z</lastmod>
-  </url>
-  <url>
-    <loc>http://blog.logansparker.com/notes/concurrency.html</loc>
-    <lastmod>2023-09-06T22:26:15.953Z</lastmod>
-  </url>
-  <url>
-    <loc>http://blog.logansparker.com/blog/secret.html</loc>
-    <lastmod>2023-09-06T22:26:15.392Z</lastmod>
-  </url>
-  <url>
-    <loc>http://blog.logansparker.com/blog/posts/nbdev/index.html</loc>
-    <lastmod>2023-09-06T22:26:14.546Z</lastmod>
-  </url>
-  <url>
-    <loc>http://blog.logansparker.com/talks.html</loc>
-    <lastmod>2023-09-06T22:26:13.727Z</lastmod>
-  </url>
-  <url>
-    <loc>http://blog.logansparker.com/index.html</loc>
-    <lastmod>2023-09-06T22:26:14.110Z</lastmod>
-  </url>
-  <url>
-    <loc>http://blog.logansparker.com/blog/posts/k8s/index.html</loc>
-    <lastmod>2023-09-06T22:26:15.036Z</lastmod>
-  </url>
-  <url>
-    <loc>http://blog.logansparker.com/guest-blog.html</loc>
-    <lastmod>2023-09-06T22:26:15.709Z</lastmod>
+    <lastmod>2023-09-11T12:21:28.553Z</lastmod>
   </url>
   <url>
     <loc>http://blog.logansparker.com/notes/cuda.html</loc>
-    <lastmod>2023-09-06T22:26:16.277Z</lastmod>
+    <lastmod>2023-09-11T12:21:27.895Z</lastmod>
+  </url>
+  <url>
+    <loc>http://blog.logansparker.com/guest-blog.html</loc>
+    <lastmod>2023-09-11T12:21:27.352Z</lastmod>
+  </url>
+  <url>
+    <loc>http://blog.logansparker.com/blog/posts/k8s/index.html</loc>
+    <lastmod>2023-09-11T12:21:26.701Z</lastmod>
+  </url>
+  <url>
+    <loc>http://blog.logansparker.com/index.html</loc>
+    <lastmod>2023-09-11T12:21:25.732Z</lastmod>
+  </url>
+  <url>
+    <loc>http://blog.logansparker.com/talks.html</loc>
+    <lastmod>2023-09-11T12:21:25.272Z</lastmod>
+  </url>
+  <url>
+    <loc>http://blog.logansparker.com/blog/posts/nbdev/index.html</loc>
+    <lastmod>2023-09-11T12:21:26.215Z</lastmod>
+  </url>
+  <url>
+    <loc>http://blog.logansparker.com/blog/secret.html</loc>
+    <lastmod>2023-09-11T12:21:27.049Z</lastmod>
+  </url>
+  <url>
+    <loc>http://blog.logansparker.com/notes/concurrency.html</loc>
+    <lastmod>2023-09-11T12:21:27.590Z</lastmod>
+  </url>
+  <url>
+    <loc>http://blog.logansparker.com/notes/llm/inference/big_inference.html</loc>
+    <lastmod>2023-09-11T12:21:28.273Z</lastmod>
   </url>
   <url>
     <loc>http://blog.logansparker.com/notes/video_editing.html</loc>
-    <lastmod>2023-09-06T22:26:16.846Z</lastmod>
+    <lastmod>2023-09-11T12:21:28.820Z</lastmod>
   </url>
 </urlset>
