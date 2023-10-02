@@ -20,7 +20,7 @@ listing:
   categories: false
   fields: [date, title]
   id: blog-listings
-  contents: [blog_data/blogs.yml]
+  contents: [blog_data/blogs.yml, blog/posts/]
 metadata-files: [blog_data/_meta.yml]
 aliases: ["blog/"]
 format:
@@ -33,16 +33,16 @@ format:
 
 ![](me.PNG){.profile-pic}
 
-Hello, I'm Logan Parker. I'm a machine learning engineer who loves building machine learning infrastructure and tools 👷🏼‍♂️.  I lead or contribute to many popular [open-source machine learning projects](oss/opensource.qmd). Furthermore, I have extensive experience (2+ years) as a machine learning engineer [across various industries](https://www.linkedin.com/in/logansparker/), including large tech companies like Airbnb and GitHub.
+Hello, I'm Logan Parker. I'm a machine learning engineer who loves building machine learning infrastructure and tools 👷🏼‍♂️.  I currently work at CoreLogic primarily focusing on Computer Vision (CV) and 3D reconstruction. Furthermore, I have experience (2+ years) as a software engineer [across various industries](https://www.linkedin.com/in/logansparker/).
 :::
 
-I'm currently exploring entrepreneurship at the intersection of dev tools, ML platforms and large language models. At GitHub, I lead [CodeSearchNet](https://github.com/github/CodeSearchNet), a large language model for semantic search that was a precursor to [CoPilot](https://github.com/features/copilot), a large language model used by millions of developers.
+I'm currently exploring entrepreneurship at the intersection of dev tools, ML platforms and large language models. I am working on some projects right now including a proper solution to pesky bill splitting.
 
 ## 💼 Get In Touch
 
-Do you need help operationalizing ML or large language models?  
+Do you need help operationalizing ML or large language models or maybe want to chat about VR research?  
 
-I'm open to consulting work and other forms of advisory. Email me at `logansparker@gmail.com` if you'd like to chat!
+Email me at `logansparker@gmail.com` if you'd like to chat!
 
 ---
 
@@ -53,9 +53,8 @@ I'm open to consulting work and other forms of advisory. Email me at `loganspark
 ::: {#blog-listings}
 :::
 
-## 📬 Subscribe
+<!-- ## 📬 Subscribe
 
-Subscribe via [<i class="bi bi-rss"></i> RSS](index.xml) or enter your email below:
+Subscribe via [<i class="bi bi-rss"></i> RSS](index.xml) or enter your email below: -->
 
-<script async data-uid="f405c5ca98" src="https://hamel.ck.page/f405c5ca98/index.js"></script>
 

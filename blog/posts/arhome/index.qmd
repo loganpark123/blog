@@ -1,0 +1,7 @@
+---
+title: ARHome
+description: "A Captsone Project"
+date: 2021-12-01
+---
+
+{{< pdf ARHome.pdf width=900 height=1600 >}}

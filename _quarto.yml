@@ -1,6 +1,7 @@
 project:
   type: website
-
+  resources:
+    - blog/posts/arhome/ARHome.pdf
 
 
 exeucte:
@@ -13,12 +14,8 @@ website:
     center:
       - icon: linkedin
         href: https://www.linkedin.com/in/logansparker
-      - icon: twitter
-        href: https://twitter.com/HamelHusain
       - icon: github
-        href: https://github.com/hamelsmu
-      - icon: rss
-        href: index.xml
+        href: https://github.com/loganpark123
   favicon: favicon.ico
   open-graph: true
   twitter-card:
@@ -49,9 +46,9 @@ website:
       file: talks.qmd
     - text: Notes
       file: notes/index.qmd
-    right:
-      - icon: rss
-        href: index.xml
+    # right:
+    #   - icon: rss
+    #     href: index.xml
 
   sidebar:
     - title: Notes
