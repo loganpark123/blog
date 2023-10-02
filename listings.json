@@ -14,15 +14,13 @@
   {
     "listing": "/index.html",
     "items": [
-      "/blog/posts/nbdev/index.html",
-      "/blog/posts/k8s/index.html"
+      "/blog/posts/arhome/index.html"
     ]
   },
   {
     "listing": "/blog/secret.html",
     "items": [
-      "/blog/posts/nbdev/index.html",
-      "/blog/posts/k8s/index.html"
+      "/blog/posts/arhome/index.html"
     ]
   }
 ]

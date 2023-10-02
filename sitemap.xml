@@ -2,50 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://blog.logansparker.com/oss/opensource.html</loc>
-    <lastmod>2023-09-11T12:21:29.246Z</lastmod>
+    <lastmod>2023-10-02T15:55:02.084Z</lastmod>
   </url>
   <url>
     <loc>http://blog.logansparker.com/notes/index.html</loc>
-    <lastmod>2023-09-11T12:21:28.553Z</lastmod>
+    <lastmod>2023-10-02T15:55:01.398Z</lastmod>
   </url>
   <url>
     <loc>http://blog.logansparker.com/notes/cuda.html</loc>
-    <lastmod>2023-09-11T12:21:27.895Z</lastmod>
+    <lastmod>2023-10-02T15:55:00.719Z</lastmod>
   </url>
   <url>
     <loc>http://blog.logansparker.com/guest-blog.html</loc>
-    <lastmod>2023-09-11T12:21:27.352Z</lastmod>
+    <lastmod>2023-10-02T15:55:00.152Z</lastmod>
   </url>
   <url>
-    <loc>http://blog.logansparker.com/blog/posts/k8s/index.html</loc>
-    <lastmod>2023-09-11T12:21:26.701Z</lastmod>
-  </url>
-  <url>
-    <loc>http://blog.logansparker.com/index.html</loc>
-    <lastmod>2023-09-11T12:21:25.732Z</lastmod>
+    <loc>http://blog.logansparker.com/blog/posts/arhome/index.html</loc>
+    <lastmod>2023-10-02T15:54:59.533Z</lastmod>
   </url>
   <url>
     <loc>http://blog.logansparker.com/talks.html</loc>
-    <lastmod>2023-09-11T12:21:25.272Z</lastmod>
+    <lastmod>2023-10-02T15:54:58.805Z</lastmod>
   </url>
   <url>
-    <loc>http://blog.logansparker.com/blog/posts/nbdev/index.html</loc>
-    <lastmod>2023-09-11T12:21:26.215Z</lastmod>
+    <loc>http://blog.logansparker.com/index.html</loc>
+    <lastmod>2023-10-02T15:54:59.278Z</lastmod>
   </url>
   <url>
     <loc>http://blog.logansparker.com/blog/secret.html</loc>
-    <lastmod>2023-09-11T12:21:27.049Z</lastmod>
+    <lastmod>2023-10-02T15:54:59.854Z</lastmod>
   </url>
   <url>
     <loc>http://blog.logansparker.com/notes/concurrency.html</loc>
-    <lastmod>2023-09-11T12:21:27.590Z</lastmod>
+    <lastmod>2023-10-02T15:55:00.405Z</lastmod>
   </url>
   <url>
     <loc>http://blog.logansparker.com/notes/llm/inference/big_inference.html</loc>
-    <lastmod>2023-09-11T12:21:28.273Z</lastmod>
+    <lastmod>2023-10-02T15:55:01.113Z</lastmod>
   </url>
   <url>
     <loc>http://blog.logansparker.com/notes/video_editing.html</loc>
-    <lastmod>2023-09-11T12:21:28.820Z</lastmod>
+    <lastmod>2023-10-02T15:55:01.665Z</lastmod>
   </url>
 </urlset>
